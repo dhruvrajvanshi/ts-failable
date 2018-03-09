@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "build",
+    "module": "commonjs",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationDir": ".",
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "newLine": "LF",
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "es2015"
+    ],
+    "plugins": [
+      {
+        "name": "tslint-language-service",
+        "alwaysShowRuleFailuresAsWarnings": false,
+        "ignoreDefinitionFiles": true,
+        "disableNoUnusedVariableRule": true
+      }
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
