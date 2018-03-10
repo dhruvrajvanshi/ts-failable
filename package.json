@@ -8,7 +8,8 @@
     "test": "mocha --compilers ts:ts-node/register './src/**/*.test.[tj]s'",
     "build": "tsc",
     "docs": "typedoc --mode modules --module commonjs --target es5 --readme ./README.md --name ts-failable --excludePrivate --excludeExternals --out docs",
-    "clean": "rm -rf build; rm -rf docs; rm index.d.ts"
+    "clean": "rm -rf build; rm -rf docs; rm ts-failable.d.ts",
+    "postpublish": "npm run build"
   },
   "repository": {
     "type": "git",
