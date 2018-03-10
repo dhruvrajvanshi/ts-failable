@@ -1,6 +1,6 @@
 {
   "name": "ts-failable",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library for type safe error handling in Typescript",
   "main": "index.js",
   "types": "./ts-failable.d.ts",
@@ -9,6 +9,7 @@
     "build": "tsc",
     "docs": "typedoc --mode modules --module commonjs --target es5 --readme ./README.md --name ts-failable --excludePrivate --excludeExternals --out docs",
     "clean": "rm -rf build; rm -rf docs; rm ts-failable.d.ts",
+    "postinstall": "npm run build",
     "prepare": "npm run build"
   },
   "repository": {
