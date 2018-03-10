@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Library for type safe error handling in Typescript",
   "main": "index.js",
+  "types": "./ts-failable.d.ts",
   "scripts": {
     "test": "mocha --compilers ts:ts-node/register './src/**/*.test.[tj]s'",
     "build": "tsc",

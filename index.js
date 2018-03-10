@@ -1,1 +1,1 @@
-exports = require("./build/ts-failable");
+module.exports = require("./build/ts-failable");
