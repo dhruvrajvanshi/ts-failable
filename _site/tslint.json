@@ -1,0 +1,10 @@
+{
+  "extends": "tslint-microsoft-contrib",
+  "rulesDirectory": "node_modules/tslint-microsoft-contrib",
+  "defaultSeverity": "warn",
+  "rules": {
+    "no-parameter-properties": false,
+    "typedef": false,
+    "ordered-imports": false
+  }
+}
