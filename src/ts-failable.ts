@@ -8,10 +8,10 @@ export interface IFailable<Result, Error> {
    * by applying the given function to the result value in
    * case of success. Has no effect in case this is a failure.
    * @param f Function that transforms a success value.
-   * 
+   *
    * @example
    * ```
-   * 
+   *
    * const numStr: Failable<string, string> = ...;
    * const parsed: Failable<number, string> = numStr.map(parseInt); // or numStr.map(s => parseInt(s))
    * ```
@@ -23,10 +23,10 @@ export interface IFailable<Result, Error> {
    * given function. Has no effect if the {@link IFailable} was
    * a success.
    * @param f Function for transforming the error value
-   * 
+   *
    * @example
    * ```
-   * 
+   *
    * const result: Failable<number, string> = ...;
    * const withErrorCode: Failable<number, number> = result.mapError(getErrorCode)
    * ```
@@ -38,10 +38,10 @@ export interface IFailable<Result, Error> {
    * a success and failure functions. Both cases
    * must return a value of type T
    * @param cases Match cases
-   * 
+   *
    * @example
    * ```
-   * 
+   *
    * const result: Failable<number, string> = ...;
    * const num = result.match({
    *   success: x => x,
@@ -62,18 +62,18 @@ export interface IFailable<Result, Error> {
    * type is a subset of this IFailable's error type.
    * If not, you can call .mapError on it to convert it's
    * error into a type compatible with this IFailable.
-   * 
+   *
    * This method allows you to chain arbitrary failable computations
    * dependent on the results of previous ones in the chain that
    * "short circuit" in case of the first error.
-   * 
+   *
    * @param f Function that takes the success value of this
    * IFailable and returns another IFailable (possibly of another
    * type)
-   * 
+   *
    * @example
    * ```
-   * 
+   *
    * const computation1: () => Failable<number, ERROR> = ...;
    * const computation2: (x: int) => Failable<string, ERROR> = ...;
    * const result: Failable<string, ERROR> = computation1().flatMap(x => computation2(x))
@@ -88,7 +88,7 @@ export interface IFailable<Result, Error> {
  * Type that represents a failure result. This is not
  * a part of the exported API and isn't actually exported
  * directly. Depend on {@link IFailable} instead.
- * @private 
+ * @private
  */
 class Failure<R, E> implements IFailable<R, E> {
   public readonly isError: true = true;
@@ -122,7 +122,7 @@ export interface IFailableMatchCase<T, R, E> {
  * Type that represents a success result.  This is not
  * a part of the exported API and isn't actually exported
  * directly. Depend on {@link IFailable} instead.
- * @private 
+ * @private
  */
 class Success<R, E> implements IFailable<R, E> {
   public readonly isError: false = false;
@@ -149,24 +149,23 @@ class Success<R, E> implements IFailable<R, E> {
   }
 }
 
-
 export type FailablePromise<T, E> = Promise<IFailable<T, E>>;
 
 /**
  * Async version of failable that takes a computation that
  * returns a Promise<Failable<T, E>>. It can be combined with
  * async/await
- * 
+ *
  * @example
  * ```
- * 
+ *
  * const computation1: () => FailablePromise<string, string> = ...;
  * const computation2: (x: string) => FailablePromise<number, string> = ...;
  * const computation3: (x: number) => Failable<number, string> = ...;
  * const computation4 = failableAsync<number, string>(async ({ run, success, failure }) => {
  *   const str = run(await computation1());
  *   const num1 = run(await computation2(str));
- * 
+ *
  *   // notice that computation3 returns a non async failable so await isn't required
  *   const num = run(computation3(num1));
  *   if (num > 10) {
@@ -177,7 +176,7 @@ export type FailablePromise<T, E> = Promise<IFailable<T, E>>;
  * })
  * ```
  */
-export function failableAsync<T = never, E = never>(
+export async function failableAsync<T = never, E = never>(
   f: (
     (arg: {
       success(value: T): Promise<IFailable<T, E>>;
@@ -187,7 +186,7 @@ export function failableAsync<T = never, E = never>(
   )
 ): Promise<IFailable<T, E>> {
   try {
-    return f({
+    return await f({
       success(value) {
         return Promise.resolve(new Success<T, E>(value));
       },
@@ -196,14 +195,14 @@ export function failableAsync<T = never, E = never>(
       },
       run(result) {
         return result.match({
-          failure: error => { throw new Failure(error); },
+          failure: error => { throw new ErrorValue(error); },
           success: value => value
         });
       }
     });
   } catch (e) {
-    if (e instanceof Failure) {
-      return Promise.resolve(e);
+    if (e instanceof ErrorValue) {
+      return e.value;
     } else {
       throw e;
     }
@@ -216,12 +215,12 @@ export function failableAsync<T = never, E = never>(
  * helper functions to create IFailable values. You
  * need to give generic arguments T and E to it indicating
  * the success and failure types.
- * 
+ *
  * @param f Failable computation
- * 
+ *
  * @example
  * ```
- * 
+ *
  * const computation1: () => Failable<string, string> = ...;
  * const computation2: (x: string) => Failable<number, string> = ...;
  * const computation3 = failable<number, string>(({ run, success, failure }) => {
@@ -235,7 +234,7 @@ export function failableAsync<T = never, E = never>(
  * })
  * ```
  */
-export function failable<T = never, E = never>(
+export function failable<T, E = never>(
   f: (
     (arg: {
       /**
@@ -258,16 +257,27 @@ export function failable<T = never, E = never>(
       },
       run(result) {
         return result.match({
-          failure: error => { throw error; },
+          failure: error => { throw new ErrorValue(error); },
           success: value => value
         });
       }
     });
   } catch (e) {
-    if (e instanceof Failure) {
-      return e;
+    if (e instanceof ErrorValue) {
+      return new Failure(e.value);
     } else {
       throw e;
     }
   }
+}
+
+/**
+ * Container for a value of type T. Used to distinguish expections
+ * thrown by failable from other exceptions.
+ * This is for internal use only. It's not exported. Don't depend
+ * on its behaviour.
+ * @private
+ */
+class ErrorValue<T> {
+  constructor(public readonly value: T) {}
 }

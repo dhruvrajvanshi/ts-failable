@@ -5,6 +5,7 @@
   "rules": {
     "no-parameter-properties": false,
     "typedef": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "no-relative-imports": false
   }
 }
