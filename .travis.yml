@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "6.5"
-  - "7"
   - "8"
-  - "9"
+  - "stable"
+os:
+  - linux
+  - osx

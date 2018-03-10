@@ -1,6 +1,11 @@
 ts-failable
 ===========
 
+[![Build Status](https://travis-ci.org/dhruvrajvanshi/ts-failable.svg?branch=master)](https://travis-ci.org/dhruvrajvanshi/ts-failable)
+[![npm version](https://badge.fury.io/js/ts-failable.svg)](https://www.npmjs.com/package/ts-failable) 
+[![Issues](https://img.shields.io/github/issues/dhruvrajvanshi/ts-failable.svg?branch=master)](https://github.com/dhruvrajvanshi/ts-failable/issues)
+
+
 This is a library for type safe error handling in Typescript.
 If you've ever wished for Rust's `Result` type along with
 the syntactic sugar (`?` operator) in Typescript, you might
