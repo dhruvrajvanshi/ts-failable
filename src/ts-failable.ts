@@ -176,7 +176,7 @@ export type FailablePromise<T, E> = Promise<IFailable<T, E>>;
  * })
  * ```
  */
-export async function failableAsync<T = never, E = never>(
+export async function failableAsync<T, E>(
   f: (
     (arg: {
       success(value: T): Promise<IFailable<T, E>>;
@@ -234,7 +234,7 @@ export async function failableAsync<T = never, E = never>(
  * })
  * ```
  */
-export function failable<T, E = never>(
+export function failable<T, E>(
   f: (
     (arg: {
       /**
@@ -269,6 +269,22 @@ export function failable<T, E = never>(
       throw e;
     }
   }
+}
+
+/**
+ * Create an error {@link IFailable} value.
+ * @param err Error value
+ */
+export function failure<E, T>(err: E): IFailable<T, E> {
+  return new Failure<T, E>(err);
+}
+
+/**
+ * Create a successful {@link IFailable} value
+ * @param value Result value
+ */
+export function success<T, E>(value: T): IFailable<T, E> {
+  return new Success<T, E>(value);
 }
 
 /**
