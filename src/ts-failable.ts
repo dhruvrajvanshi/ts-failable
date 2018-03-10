@@ -85,7 +85,10 @@ export interface IFailable<Result, Error> {
 }
 
 /**
- * Type that represents a failure result
+ * Type that represents a failure result. This is not
+ * a part of the exported API and isn't actually exported
+ * directly. Depend on {@link IFailable} instead.
+ * @private 
  */
 class Failure<R, E> implements IFailable<R, E> {
   public readonly isError: true = true;
@@ -116,7 +119,10 @@ export interface IFailableMatchCase<T, R, E> {
 }
 
 /**
- * Type that represents a success result
+ * Type that represents a success result.  This is not
+ * a part of the exported API and isn't actually exported
+ * directly. Depend on {@link IFailable} instead.
+ * @private 
  */
 class Success<R, E> implements IFailable<R, E> {
   public readonly isError: false = false;

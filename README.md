@@ -47,6 +47,9 @@ npm install ts-failable
 Any failure in an intermediate step should short circuit the
 whole thing. This is the entire point of this library.
 
+## API Docs
+https://dhruvrajvanshi.github.io/ts-failable/docs/index.html
+
 ## Usage
 We'll walk through a simple function named getNumber that takes
 an optional string and returns a number if the string is present,

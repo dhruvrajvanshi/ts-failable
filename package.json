@@ -7,7 +7,7 @@
   "scripts": {
     "test": "mocha --compilers ts:ts-node/register './src/**/*.test.[tj]s'",
     "build": "tsc",
-    "docs": "typedoc --mode modules --module commonjs --target es5 --readme ./README.md --name ts-failable --excludePrivate --excludeExternals --out docs",
+    "docs": "typedoc --mode modules --module commonjs --target es5 --readme ./README.md --name ts-failable --excludePrivate --excludeExternals --out docs; touch ./docs/.nojekyll",
     "clean": "rm -rf build; rm -rf docs; rm ts-failable.d.ts",
     "postinstall": "npm run build",
     "prepare": "npm run build"
