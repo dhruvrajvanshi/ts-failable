@@ -1,5 +1,4 @@
-build
 node_modules
+.DS_store
 package-lock.json
-ts-failable.d.ts
 ts-failable.test.d.ts
