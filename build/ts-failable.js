@@ -227,6 +227,7 @@ exports.success = success;
  * This is for internal use only. It's not exported. Don't depend
  * on its behaviour.
  * @private
+ * @internal
  */
 var ErrorValue = /** @class */ (function () {
     function ErrorValue(value) {

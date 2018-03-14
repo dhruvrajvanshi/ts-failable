@@ -151,12 +151,13 @@ class Success<R, E> implements IFailable<R, E> {
 
 export type FailablePromise<T, E> = Promise<IFailable<T, E>>;
 
+export type FailableAsyncFunctionParams<T, E> = {
+  success(value: T): Promise<IFailable<T, E>>;
+  failure(error: E): Promise<IFailable<T, E>>;
+  run<R>(f: IFailable<R, E>): R;
+}
 export type FailableAsyncArg<T, E> = (
-  (arg: {
-    success(value: T): Promise<IFailable<T, E>>;
-    failure(error: E): Promise<IFailable<T, E>>;
-    run<R>(f: IFailable<R, E>): R;
-  }) => Promise<IFailable<T, E>>
+  (arg: FailableAsyncFunctionParams<T, E>) => Promise<IFailable<T, E>>
 );
 
 /**
@@ -211,16 +212,18 @@ export async function failableAsync<T, E>(
   }
 }
 
+export type FailableArgParams<T, E> = {
+  /**
+   * Make IFailable<T, E> from a T
+   * @param value
+   */
+  success(value: T): IFailable<T, E>;
+  failure(error: E): IFailable<T, E>;
+  run<R>(f: IFailable<R, E>): R;
+}
+
 export type FailableArg<T, E> = (
-  (arg: {
-    /**
-     * Make IFailable<T, E> from a T
-     * @param value
-     */
-    success(value: T): IFailable<T, E>;
-    failure(error: E): IFailable<T, E>;
-    run<R>(f: IFailable<R, E>): R;
-  }) => IFailable<T, E>
+  (arg: FailableArgParams<T, E>) => IFailable<T, E>
 );
 
 /**
@@ -297,7 +300,11 @@ export function success<T, E>(value: T): IFailable<T, E> {
  * This is for internal use only. It's not exported. Don't depend
  * on its behaviour.
  * @private
+ * @internal
  */
 class ErrorValue<T> {
   constructor(public readonly value: T) {}
 }
+
+import { AsyncFunction as AsyncFunction_ } from "./AsyncFunction";
+export type AsyncFunction<Req, Res, E> = AsyncFunction_<Req, Res, E>;

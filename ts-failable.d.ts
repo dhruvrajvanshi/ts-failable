@@ -83,11 +83,12 @@ export interface IFailableMatchCase<T, R, E> {
     success(v: R): T;
 }
 export declare type FailablePromise<T, E> = Promise<IFailable<T, E>>;
-export declare type FailableAsyncArg<T, E> = ((arg: {
+export declare type FailableAsyncFunctionParams<T, E> = {
     success(value: T): Promise<IFailable<T, E>>;
     failure(error: E): Promise<IFailable<T, E>>;
     run<R>(f: IFailable<R, E>): R;
-}) => Promise<IFailable<T, E>>);
+};
+export declare type FailableAsyncArg<T, E> = ((arg: FailableAsyncFunctionParams<T, E>) => Promise<IFailable<T, E>>);
 /**
  * Async version of failable that takes a computation that
  * returns a Promise<Failable<T, E>>. It can be combined with
@@ -114,7 +115,7 @@ export declare type FailableAsyncArg<T, E> = ((arg: {
  * ```
  */
 export declare function failableAsync<T, E>(f: FailableAsyncArg<T, E>): Promise<IFailable<T, E>>;
-export declare type FailableArg<T, E> = ((arg: {
+export declare type FailableArgParams<T, E> = {
     /**
      * Make IFailable<T, E> from a T
      * @param value
@@ -122,7 +123,8 @@ export declare type FailableArg<T, E> = ((arg: {
     success(value: T): IFailable<T, E>;
     failure(error: E): IFailable<T, E>;
     run<R>(f: IFailable<R, E>): R;
-}) => IFailable<T, E>);
+};
+export declare type FailableArg<T, E> = ((arg: FailableArgParams<T, E>) => IFailable<T, E>);
 /**
  * Creates a failable comutation from a function.
  * The supplied function receives an object containing
@@ -159,3 +161,5 @@ export declare function failure<E, T>(err: E): IFailable<T, E>;
  * @param value Result value
  */
 export declare function success<T, E>(value: T): IFailable<T, E>;
+import { AsyncFunction as AsyncFunction_ } from "./AsyncFunction";
+export declare type AsyncFunction<Req, Res, E> = AsyncFunction_<Req, Res, E>;
