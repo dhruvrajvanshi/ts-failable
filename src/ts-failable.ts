@@ -151,6 +151,14 @@ class Success<R, E> implements IFailable<R, E> {
 
 export type FailablePromise<T, E> = Promise<IFailable<T, E>>;
 
+export type FailableAsyncArg<T, E> = (
+  (arg: {
+    success(value: T): Promise<IFailable<T, E>>;
+    failure(error: E): Promise<IFailable<T, E>>;
+    run<R>(f: IFailable<R, E>): R;
+  }) => Promise<IFailable<T, E>>
+);
+
 /**
  * Async version of failable that takes a computation that
  * returns a Promise<Failable<T, E>>. It can be combined with
@@ -177,13 +185,7 @@ export type FailablePromise<T, E> = Promise<IFailable<T, E>>;
  * ```
  */
 export async function failableAsync<T, E>(
-  f: (
-    (arg: {
-      success(value: T): Promise<IFailable<T, E>>;
-      failure(error: E): Promise<IFailable<T, E>>;
-      run<R>(f: IFailable<R, E>): R;
-    }) => Promise<IFailable<T, E>>
-  )
+  f: FailableAsyncArg<T, E>
 ): Promise<IFailable<T, E>> {
   try {
     return await f({
@@ -208,6 +210,18 @@ export async function failableAsync<T, E>(
     }
   }
 }
+
+export type FailableArg<T, E> = (
+  (arg: {
+    /**
+     * Make IFailable<T, E> from a T
+     * @param value
+     */
+    success(value: T): IFailable<T, E>;
+    failure(error: E): IFailable<T, E>;
+    run<R>(f: IFailable<R, E>): R;
+  }) => IFailable<T, E>
+);
 
 /**
  * Creates a failable comutation from a function.
@@ -235,17 +249,7 @@ export async function failableAsync<T, E>(
  * ```
  */
 export function failable<T, E>(
-  f: (
-    (arg: {
-      /**
-       * Make IFailable<T, E> from a T
-       * @param value
-       */
-      success(value: T): IFailable<T, E>;
-      failure(error: E): IFailable<T, E>;
-      run<R>(f: IFailable<R, E>): R;
-    }) => IFailable<T, E>
-  )
+  f: FailableArg<T, E>
 ): IFailable<T, E> {
   try {
     return f({
