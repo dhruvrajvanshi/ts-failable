@@ -86,6 +86,8 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_ts_failable_.html#failablearg" class="tsd-kind-icon">Failable<wbr>Arg</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_ts_failable_.html#failableasyncarg" class="tsd-kind-icon">Failable<wbr>Async<wbr>Arg</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_ts_failable_.html#failablepromise" class="tsd-kind-icon">Failable<wbr>Promise</a></li>
 							</ul>
 						</section>
@@ -104,12 +106,223 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="failablearg" class="tsd-anchor"></a>
+					<h3>Failable<wbr>Arg</h3>
+					<div class="tsd-signature tsd-kind-icon">Failable<wbr>Arg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L214">ts-failable.ts:214</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>arg: <span class="tsd-signature-type">object</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5>failure<span class="tsd-signature-symbol">: </span>function</h5>
+														<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
+															<li class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<aside class="tsd-sources">
+																	<ul>
+																		<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L221">ts-failable.ts:221</a></li>
+																	</ul>
+																</aside>
+																<h4 class="tsd-parameters-title">Parameters</h4>
+																<ul class="tsd-parameters">
+																	<li>
+																		<h5>error: <span class="tsd-signature-type">E</span></h5>
+																	</li>
+																</ul>
+																<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+															</li>
+													</ul>        </li>
+													<li class="tsd-parameter">
+														<h5>run<span class="tsd-signature-symbol">: </span>function</h5>
+														<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
+															<li class="tsd-signature tsd-kind-icon">run&lt;R&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<aside class="tsd-sources">
+																	<ul>
+																		<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L222">ts-failable.ts:222</a></li>
+																	</ul>
+																</aside>
+																<h4 class="tsd-type-parameters-title">Type parameters</h4>
+																<ul class="tsd-type-parameters">
+																	<li>
+																		<h4>R</h4>
+																	</li>
+																</ul>
+																<h4 class="tsd-parameters-title">Parameters</h4>
+																<ul class="tsd-parameters">
+																	<li>
+																		<h5>f: <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
+																	</li>
+																</ul>
+																<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+															</li>
+													</ul>        </li>
+													<li class="tsd-parameter">
+														<h5>success<span class="tsd-signature-symbol">: </span>function</h5>
+														<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
+															<li class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<aside class="tsd-sources">
+																	<ul>
+																		<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L220">ts-failable.ts:220</a></li>
+																	</ul>
+																</aside>
+																<div class="tsd-comment tsd-typography">
+																	<div class="lead">
+																		<p>Make IFailable&lt;T, E&gt; from a T</p>
+																	</div>
+																</div>
+																<h4 class="tsd-parameters-title">Parameters</h4>
+																<ul class="tsd-parameters">
+																	<li>
+																		<h5>value: <span class="tsd-signature-type">T</span></h5>
+																		<div class="tsd-comment tsd-typography">
+																		</div>
+																	</li>
+																</ul>
+																<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+															</li>
+													</ul>        </li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="failableasyncarg" class="tsd-anchor"></a>
+					<h3>Failable<wbr>Async<wbr>Arg</h3>
+					<div class="tsd-signature tsd-kind-icon">Failable<wbr>Async<wbr>Arg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L154">ts-failable.ts:154</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>arg: <span class="tsd-signature-type">object</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5>failure<span class="tsd-signature-symbol">: </span>function</h5>
+														<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
+															<li class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<aside class="tsd-sources">
+																	<ul>
+																		<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L157">ts-failable.ts:157</a></li>
+																	</ul>
+																</aside>
+																<h4 class="tsd-parameters-title">Parameters</h4>
+																<ul class="tsd-parameters">
+																	<li>
+																		<h5>error: <span class="tsd-signature-type">E</span></h5>
+																	</li>
+																</ul>
+																<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+															</li>
+													</ul>        </li>
+													<li class="tsd-parameter">
+														<h5>run<span class="tsd-signature-symbol">: </span>function</h5>
+														<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
+															<li class="tsd-signature tsd-kind-icon">run&lt;R&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<aside class="tsd-sources">
+																	<ul>
+																		<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L158">ts-failable.ts:158</a></li>
+																	</ul>
+																</aside>
+																<h4 class="tsd-type-parameters-title">Type parameters</h4>
+																<ul class="tsd-type-parameters">
+																	<li>
+																		<h4>R</h4>
+																	</li>
+																</ul>
+																<h4 class="tsd-parameters-title">Parameters</h4>
+																<ul class="tsd-parameters">
+																	<li>
+																		<h5>f: <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
+																	</li>
+																</ul>
+																<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
+															</li>
+													</ul>        </li>
+													<li class="tsd-parameter">
+														<h5>success<span class="tsd-signature-symbol">: </span>function</h5>
+														<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
+															<li class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+														</ul>
+														<ul class="tsd-descriptions">
+															<li class="tsd-description">
+																<aside class="tsd-sources">
+																	<ul>
+																		<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L156">ts-failable.ts:156</a></li>
+																	</ul>
+																</aside>
+																<h4 class="tsd-parameters-title">Parameters</h4>
+																<ul class="tsd-parameters">
+																	<li>
+																		<h5>value: <span class="tsd-signature-type">T</span></h5>
+																	</li>
+																</ul>
+																<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+															</li>
+													</ul>        </li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 					<a name="failablepromise" class="tsd-anchor"></a>
 					<h3>Failable<wbr>Promise</h3>
 					<div class="tsd-signature tsd-kind-icon">Failable<wbr>Promise<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L152">ts-failable.ts:152</a></li>
+							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L152">ts-failable.ts:152</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -120,13 +333,13 @@
 					<a name="failable" class="tsd-anchor"></a>
 					<h3>failable</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">failable&lt;T, E&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">failable&lt;T, E&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="_ts_failable_.html#failablearg" class="tsd-signature-type">FailableArg</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L237">ts-failable.ts:237</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L251">ts-failable.ts:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -166,106 +379,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>f: <span class="tsd-signature-type">function</span></h5>
+									<h5>f: <a href="_ts_failable_.html#failablearg" class="tsd-signature-type">FailableArg</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Failable computation</p>
 									</div>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>arg: <span class="tsd-signature-type">object</span></h5>
-															<ul class="tsd-parameters">
-																<li class="tsd-parameter">
-																	<h5>failure<span class="tsd-signature-symbol">: </span>function</h5>
-																	<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<aside class="tsd-sources">
-																				<ul>
-																					<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L245">ts-failable.ts:245</a></li>
-																				</ul>
-																			</aside>
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>error: <span class="tsd-signature-type">E</span></h5>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
-																		</li>
-																</ul>        </li>
-																<li class="tsd-parameter">
-																	<h5>run<span class="tsd-signature-symbol">: </span>function</h5>
-																	<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon">run&lt;R&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<aside class="tsd-sources">
-																				<ul>
-																					<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L246">ts-failable.ts:246</a></li>
-																				</ul>
-																			</aside>
-																			<h4 class="tsd-type-parameters-title">Type parameters</h4>
-																			<ul class="tsd-type-parameters">
-																				<li>
-																					<h4>R</h4>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>f: <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
-																		</li>
-																</ul>        </li>
-																<li class="tsd-parameter">
-																	<h5>success<span class="tsd-signature-symbol">: </span>function</h5>
-																	<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<aside class="tsd-sources">
-																				<ul>
-																					<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L244">ts-failable.ts:244</a></li>
-																				</ul>
-																			</aside>
-																			<div class="tsd-comment tsd-typography">
-																				<div class="lead">
-																					<p>Make IFailable&lt;T, E&gt; from a T</p>
-																				</div>
-																			</div>
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>value: <span class="tsd-signature-type">T</span></h5>
-																					<div class="tsd-comment tsd-typography">
-																					</div>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
-																		</li>
-																</ul>        </li>
-															</ul>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -276,13 +393,13 @@
 					<a name="failableasync" class="tsd-anchor"></a>
 					<h3>failable<wbr>Async</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">failable<wbr>Async&lt;T, E&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">failable<wbr>Async&lt;T, E&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="_ts_failable_.html#failableasyncarg" class="tsd-signature-type">FailableAsyncArg</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L179">ts-failable.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L187">ts-failable.ts:187</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -324,96 +441,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>f: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>arg: <span class="tsd-signature-type">object</span></h5>
-															<ul class="tsd-parameters">
-																<li class="tsd-parameter">
-																	<h5>failure<span class="tsd-signature-symbol">: </span>function</h5>
-																	<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<aside class="tsd-sources">
-																				<ul>
-																					<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L183">ts-failable.ts:183</a></li>
-																				</ul>
-																			</aside>
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>error: <span class="tsd-signature-type">E</span></h5>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-																		</li>
-																</ul>        </li>
-																<li class="tsd-parameter">
-																	<h5>run<span class="tsd-signature-symbol">: </span>function</h5>
-																	<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-has-type-parameter tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon">run&lt;R&gt;<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<aside class="tsd-sources">
-																				<ul>
-																					<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L184">ts-failable.ts:184</a></li>
-																				</ul>
-																			</aside>
-																			<h4 class="tsd-type-parameters-title">Type parameters</h4>
-																			<ul class="tsd-type-parameters">
-																				<li>
-																					<h4>R</h4>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>f: <a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">R</span></h4>
-																		</li>
-																</ul>        </li>
-																<li class="tsd-parameter">
-																	<h5>success<span class="tsd-signature-symbol">: </span>function</h5>
-																	<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-type-literal tsd-is-not-exported">
-																		<li class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-																	</ul>
-																	<ul class="tsd-descriptions">
-																		<li class="tsd-description">
-																			<aside class="tsd-sources">
-																				<ul>
-																					<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L182">ts-failable.ts:182</a></li>
-																				</ul>
-																			</aside>
-																			<h4 class="tsd-parameters-title">Parameters</h4>
-																			<ul class="tsd-parameters">
-																				<li>
-																					<h5>value: <span class="tsd-signature-type">T</span></h5>
-																				</li>
-																			</ul>
-																			<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-																		</li>
-																</ul>        </li>
-															</ul>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
+									<h5>f: <a href="_ts_failable_.html#failableasyncarg" class="tsd-signature-type">FailableAsyncArg</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_ts_failable_.ifailable.html" class="tsd-signature-type">IFailable</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -430,7 +458,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L278">ts-failable.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L282">ts-failable.ts:282</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -470,7 +498,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/646c967/src/ts-failable.ts#L286">ts-failable.ts:286</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/a11a28f/src/ts-failable.ts#L290">ts-failable.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -532,6 +560,12 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../interfaces/_ts_failable_.ifailablematchcase.html" class="tsd-kind-icon">IFailable<wbr>Match<wbr>Case</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_ts_failable_.html#failablearg" class="tsd-kind-icon">Failable<wbr>Arg</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_ts_failable_.html#failableasyncarg" class="tsd-kind-icon">Failable<wbr>Async<wbr>Arg</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_ts_failable_.html#failablepromise" class="tsd-kind-icon">Failable<wbr>Promise</a>

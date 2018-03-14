@@ -23,9 +23,15 @@
         "ignoreDefinitionFiles": true,
         "disableNoUnusedVariableRule": true
       }
+    ],
+    "types": [
+      "mocha", "chai"
     ]
   },
   "include": [
     "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
