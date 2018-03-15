@@ -113,9 +113,26 @@ class Failure<R, E> implements IFailable<R, E> {
     return cases.failure(this.error);
   }
 }
+
+/**
+ * Argument type of .match method on an {@link IFailbale}.
+ * It takes an object containing two callbacks; One for
+ * success and failure case.
+ * The value returned by these callbacks should be the
+ * same type.
+ */
 export interface IFailableMatchCase<T, R, E> {
-  failure(e: E): T;
-  success(v: R): T;
+  /**
+   * Callback that is run in case of failure.
+   * It is passed the error value of the result.
+   */
+  failure: (e: E) => T;
+
+  /**
+   * Callback that is called in case of success.
+   * It is passed the success value of the result.
+   */
+  success: (v: R) => T;
 }
 
 /**

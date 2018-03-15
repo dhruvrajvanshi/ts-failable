@@ -42,15 +42,14 @@ let r1 = run(computation1());
 let r2 = run(computation2(r1));
 let r3 = run(computation3(r1, r2))
 ```
+Any failure in an intermediate step should short circuit the
+whole thing.
 
 ## Installation
 
 ```
 npm install ts-failable
 ```
-
-Any failure in an intermediate step should short circuit the
-whole thing. This is the entire point of this library.
 
 ## API Docs
 https://dhruvrajvanshi.github.io/ts-failable/docs/index.html
