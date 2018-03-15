@@ -305,5 +305,10 @@ class ErrorValue<T> {
   constructor(public readonly value: T) {}
 }
 
-import { AsyncFunction as AsyncFunction_ } from "./AsyncFunction";
-export type AsyncFunction<Req, Res, E> = AsyncFunction_<Req, Res, E>;
+/**
+ * Helper type for an async function that
+ * takes Req and returns a {@link FailablePromise}<Res, Err>.
+ */
+export type AsyncFunction<
+  Req, Res, Err
+> = (req: Req) => FailablePromise<Res, Err>;
