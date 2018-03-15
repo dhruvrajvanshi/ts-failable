@@ -102,18 +102,9 @@ describe("failable", function () {
             var r2 = run(f2(r1));
             return ts_failable_1.success(r2);
         }); };
-        f3(undefined).match({
-            success: function () { throw "Shouldn't happen"; },
-            failure: function (e) { return chai_1.expect(e).to.equal("NOT_FOUND"); }
-        });
-        f3("asdf").match({
-            success: function () { throw "Shouldn't happen"; },
-            failure: function (e) { return chai_1.expect(e).to.equal("NOT_A_NUMBER"); }
-        });
-        f3("12").match({
-            success: function (x) { return chai_1.expect(x).to.equal(12); },
-            failure: function () { throw "Shouldn't happen"; }
-        });
+        chai_1.expect(f3(undefined)).to.deep.equal(ts_failable_1.failure("NOT_FOUND"));
+        chai_1.expect(f3("asdf")).to.deep.equal(ts_failable_1.failure("NOT_A_NUMBER"));
+        chai_1.expect(f3("12")).to.deep.equal(ts_failable_1.success(12));
     });
 });
 describe("failableAsync", function () {
@@ -155,9 +146,9 @@ describe("failableAsync", function () {
     }); });
     it("should chain correctly", function () { return __awaiter(_this, void 0, void 0, function () {
         var _this = this;
-        var f1, f2, f3;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var f1, f2, f3, _a, _b, _c;
+        return __generator(this, function (_d) {
+            switch (_d.label) {
                 case 0:
                     f1 = function (s) { return ts_failable_1.failableAsync(function () { return __awaiter(_this, void 0, void 0, function () {
                         return __generator(this, function (_a) {
@@ -200,7 +191,7 @@ describe("failableAsync", function () {
                             });
                         })];
                 case 1:
-                    _a.sent();
+                    _d.sent();
                     return [4 /*yield*/, ts_failable_1.failableAsync(function (_a) {
                             var run = _a.run;
                             return __awaiter(_this, void 0, void 0, function () {
@@ -223,7 +214,7 @@ describe("failableAsync", function () {
                             });
                         })];
                 case 2:
-                    _a.sent();
+                    _d.sent();
                     return [4 /*yield*/, ts_failable_1.failableAsync(function (_a) {
                             var run = _a.run;
                             return __awaiter(_this, void 0, void 0, function () {
@@ -247,7 +238,7 @@ describe("failableAsync", function () {
                             });
                         })];
                 case 3:
-                    _a.sent();
+                    _d.sent();
                     f3 = function (s) { return ts_failable_1.failableAsync(function (_a) {
                         var run = _a.run;
                         return __awaiter(_this, void 0, void 0, function () {
@@ -268,24 +259,18 @@ describe("failableAsync", function () {
                             });
                         });
                     }); };
+                    _a = chai_1.expect;
                     return [4 /*yield*/, f3(undefined)];
                 case 4:
-                    (_a.sent()).match({
-                        success: function () { throw "Shouldn't happen"; },
-                        failure: function (e) { return chai_1.expect(e).to.equal("NOT_FOUND"); }
-                    });
+                    _a.apply(void 0, [_d.sent()]).to.deep.equal(ts_failable_1.failure("NOT_FOUND"));
+                    _b = chai_1.expect;
                     return [4 /*yield*/, f3("asdf")];
                 case 5:
-                    (_a.sent()).match({
-                        success: function () { throw "Shouldn't happen"; },
-                        failure: function (e) { return chai_1.expect(e).to.equal("NOT_A_NUMBER"); }
-                    });
+                    _b.apply(void 0, [_d.sent()]).to.deep.equal(ts_failable_1.failure("NOT_A_NUMBER"));
+                    _c = chai_1.expect;
                     return [4 /*yield*/, f3("12")];
                 case 6:
-                    (_a.sent()).match({
-                        success: function (x) { return chai_1.expect(x).to.equal(12); },
-                        failure: function () { throw "Shouldn't happen"; }
-                    });
+                    _c.apply(void 0, [_d.sent()]).to.deep.equal(ts_failable_1.success(12));
                     return [2 /*return*/];
             }
         });

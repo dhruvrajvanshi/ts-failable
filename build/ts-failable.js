@@ -56,7 +56,6 @@ var Success = /** @class */ (function () {
     };
     return Success;
 }());
-var debug_ = false;
 /**
  * Async version of failable that takes a computation that
  * returns a Promise<Failable<T, E>>. It can be combined with
@@ -90,27 +89,16 @@ function failableAsync(f) {
         failure: function (e) {
             return Promise.resolve(new Failure(e));
         },
-        run: function (result, debug) {
-            if (debug) {
-                debug_ = true;
-            }
+        run: function (result) {
             return result.match({
-                failure: function (error) {
-                    throw new ErrorValue(new Failure(error));
-                },
+                failure: function (error) { throw new ErrorValue(error); },
                 success: function (value) { return value; }
             });
         }
     })
         .catch(function (e) {
-            if (debug_) {
-                console.log(e);
-            }
         if (e instanceof ErrorValue) {
-            if (debug_) {
-                console.log(e.value);
-            }
-            return Promise.resolve(e.value);
+            return Promise.resolve(new Failure(e.value));
         }
         else {
             return Promise.reject(e);
