@@ -185,31 +185,30 @@ export type FailableAsyncArg<T, E> = (
  * })
  * ```
  */
-export async function failableAsync<T, E>(
+export function failableAsync<T, E>(
   f: FailableAsyncArg<T, E>
 ): Promise<IFailable<T, E>> {
-  try {
-    return await f({
-      success(value) {
-        return Promise.resolve(new Success<T, E>(value));
-      },
-      failure(e) {
-        return Promise.resolve(new Failure<T, E>(e));
-      },
-      run(result) {
-        return result.match({
-          failure: error => { throw new ErrorValue(error); },
-          success: value => value
-        });
-      }
-    });
-  } catch (e) {
-    if (e instanceof ErrorValue) {
-      return e.value;
-    } else {
-      throw e;
+  return f({
+    success(value) {
+      return Promise.resolve(new Success<T, E>(value));
+    },
+    failure(e) {
+      return Promise.resolve(new Failure<T, E>(e));
+    },
+    run(result) {
+      return result.match({
+        failure: error => { throw new ErrorValue(error); },
+        success: value => value
+      });
     }
-  }
+  })
+  .catch(e => {
+    if (e instanceof ErrorValue) {
+      return Promise.resolve(new Failure(e.value));
+    } else {
+      return Promise.reject(e);
+    }
+  });
 }
 
 export type FailableArgParams<T, E> = {

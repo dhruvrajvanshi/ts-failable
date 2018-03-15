@@ -65,18 +65,9 @@ describe("failable", () => {
       const  r2 = run(f2(r1));
       return success(r2);
     });
-    f3(undefined).match({
-      success: () => { throw "Shouldn't happen"; },
-      failure: e => expect(e).to.equal("NOT_FOUND")
-    });
-    f3("asdf").match({
-      success: () => { throw "Shouldn't happen"; },
-      failure: e => expect(e).to.equal("NOT_A_NUMBER")
-    });
-    f3("12").match({
-      success: (x) => expect(x).to.equal(12),
-      failure: () => { throw "Shouldn't happen"; }
-    });
+    expect(f3(undefined)).to.deep.equal(failure("NOT_FOUND"));
+    expect(f3("asdf")).to.deep.equal(failure("NOT_A_NUMBER"));
+    expect(f3("12")).to.deep.equal(success(12));
   });
 });
 
@@ -139,17 +130,8 @@ describe("failableAsync", () => {
       const  r2 = run(await f2(r1));
       return success(r2);
     });
-    (await f3(undefined)).match({
-      success: () => { throw "Shouldn't happen"; },
-      failure: e => expect(e).to.equal("NOT_FOUND")
-    });
-    (await f3("asdf")).match({
-      success: () => { throw "Shouldn't happen"; },
-      failure: e => expect(e).to.equal("NOT_A_NUMBER")
-    });
-    (await f3("12")).match({
-      success: (x) => expect(x).to.equal(12),
-      failure: () => { throw "Shouldn't happen"; }
-    });
+    expect(await f3(undefined)).to.deep.equal(failure("NOT_FOUND"));
+    expect(await f3("asdf")).to.deep.equal(failure("NOT_A_NUMBER"));
+    expect(await f3("12")).to.deep.equal(success(12));
   });
 });
