@@ -115,7 +115,7 @@ class Failure<R, E> implements IFailable<R, E> {
 }
 
 /**
- * Argument type of .match method on an {@link IFailbale}.
+ * Argument type of .match method on an {@link IFailable}.
  * It takes an object containing two callbacks; One for
  * success and failure case.
  * The value returned by these callbacks should be the
