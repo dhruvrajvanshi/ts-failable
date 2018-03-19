@@ -4,6 +4,26 @@
  */
 export interface IFailable<Result, Error> {
   /**
+   * Return an object containing the result of
+   * the computation from which the value or error
+   * can be extracted using .isError check.
+   * Useful as an alternative to .match
+   *
+   * @example
+   * ```
+   *
+   * const failable: IFailable<number, string> = ...;
+   * if (failable.result.isError) {
+   *   // .error can be accessed inside this block
+   *   console.log(failable.result.error);
+   * } else {
+   *   // .value can be accessed inside this block
+   *   console.log(failable.result.value);
+   * }
+   * ```
+   */
+  result: IFailableResult<Result, Error>;
+  /**
    * Transform an {@link IFailable}<R, E> into an {@link IFailable}<R2, E>
    * by applying the given function to the result value in
    * case of success. Has no effect in case this is a failure.
@@ -85,6 +105,19 @@ export interface IFailable<Result, Error> {
 }
 
 /**
+ * Discriminated union for an {@link IFailable} result.
+ * value or error can be extracted from it using an
+ * `if (r.isError)` check
+ */
+export type IFailableResult<T, E> = {
+  isError: true;
+  error: E;
+} | {
+  isError: false;
+  value: T;
+}
+
+/**
  * Type that represents a failure result. This is not
  * a part of the exported API and isn't actually exported
  * directly. Depend on {@link IFailable} instead.
@@ -92,7 +125,12 @@ export interface IFailable<Result, Error> {
  */
 class Failure<R, E> implements IFailable<R, E> {
   public readonly isError: true = true;
+  public readonly result: IFailableResult<R, E>;
   constructor(public readonly error: E) {
+    this.result = {
+      isError: true,
+      error: error
+    }
   }
 
   public map<R2>(_: (r: R) => R2): IFailable<R2, E> {
@@ -115,7 +153,7 @@ class Failure<R, E> implements IFailable<R, E> {
 }
 
 /**
- * Argument type of .match method on an {@link IFailable}.
+ * Argument type of .match method on an {@link IFailbale}.
  * It takes an object containing two callbacks; One for
  * success and failure case.
  * The value returned by these callbacks should be the
@@ -143,14 +181,24 @@ export interface IFailableMatchCase<T, R, E> {
  */
 class Success<R, E> implements IFailable<R, E> {
   public readonly isError: false = false;
-  constructor(public readonly result: R) {
+  public readonly result: IFailableResult<R, E>;
+  constructor(public readonly value: R) {
+    this.result = {
+      isError: false,
+      value: value
+    }
   }
+
+  public isFailure() {
+    return false;
+  }
+
   public map<R2>(func: (r: R) => R2): IFailable<R2, E> {
-    return new Success(func(this.result));
+    return new Success(func(this.value));
   }
 
   public flatMap<R2, E2 extends E = E>(func: (r: R) => IFailable<R2, E2>): IFailable<R2, E2> {
-    return func(this.result).match<IFailable<R2, E2>>({
+    return func(this.value).match<IFailable<R2, E2>>({
       success: value => new Success<R2, E2>(value),
       failure: e => new Failure<R2, E2>(e)
     });
@@ -162,7 +210,7 @@ class Success<R, E> implements IFailable<R, E> {
   }
 
   public match<T>(cases: IFailableMatchCase<T, R, E>): T {
-    return cases.success(this.result);
+    return cases.success(this.value);
   }
 }
 

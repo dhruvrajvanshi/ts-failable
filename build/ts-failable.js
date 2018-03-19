@@ -10,6 +10,10 @@ var Failure = /** @class */ (function () {
     function Failure(error) {
         this.error = error;
         this.isError = true;
+        this.result = {
+            isError: true,
+            error: error
+        };
     }
     Failure.prototype.map = function (_) {
         // tslint:disable-next-line:no-any
@@ -34,15 +38,22 @@ var Failure = /** @class */ (function () {
  * @private
  */
 var Success = /** @class */ (function () {
-    function Success(result) {
-        this.result = result;
+    function Success(value) {
+        this.value = value;
         this.isError = false;
+        this.result = {
+            isError: false,
+            value: value
+        };
     }
+    Success.prototype.isFailure = function () {
+        return false;
+    };
     Success.prototype.map = function (func) {
-        return new Success(func(this.result));
+        return new Success(func(this.value));
     };
     Success.prototype.flatMap = function (func) {
-        return func(this.result).match({
+        return func(this.value).match({
             success: function (value) { return new Success(value); },
             failure: function (e) { return new Failure(e); }
         });
@@ -52,7 +63,7 @@ var Success = /** @class */ (function () {
         return this;
     };
     Success.prototype.match = function (cases) {
-        return cases.success(this.result);
+        return cases.success(this.value);
     };
     return Success;
 }());

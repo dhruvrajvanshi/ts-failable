@@ -4,6 +4,26 @@
  */
 export interface IFailable<Result, Error> {
     /**
+     * Return an object containing the result of
+     * the computation from which the value or error
+     * can be extracted using .isError check.
+     * Useful as an alternative to .match
+     *
+     * @example
+     * ```
+     *
+     * const failable: IFailable<number, string> = ...;
+     * if (failable.result.isError) {
+     *   // .error can be accessed inside this block
+     *   console.log(failable.result.error);
+     * } else {
+     *   // .value can be accessed inside this block
+     *   console.log(failable.result.value);
+     * }
+     * ```
+     */
+    result: IFailableResult<Result, Error>;
+    /**
      * Transform an {@link IFailable}<R, E> into an {@link IFailable}<R2, E>
      * by applying the given function to the result value in
      * case of success. Has no effect in case this is a failure.
@@ -78,9 +98,36 @@ export interface IFailable<Result, Error> {
      */
     flatMap<R2, E2 extends Error = Error>(f: (r: Result) => IFailable<R2, E2>): IFailable<R2, Error | E2>;
 }
+/**
+ * Discriminated union for an {@link IFailable} result.
+ * value or error can be extracted from it using an
+ * `if (r.isError)` check
+ */
+export declare type IFailableResult<T, E> = {
+    isError: true;
+    error: E;
+} | {
+    isError: false;
+    value: T;
+};
+/**
+ * Argument type of .match method on an {@link IFailbale}.
+ * It takes an object containing two callbacks; One for
+ * success and failure case.
+ * The value returned by these callbacks should be the
+ * same type.
+ */
 export interface IFailableMatchCase<T, R, E> {
-    failure(e: E): T;
-    success(v: R): T;
+    /**
+     * Callback that is run in case of failure.
+     * It is passed the error value of the result.
+     */
+    failure: (e: E) => T;
+    /**
+     * Callback that is called in case of success.
+     * It is passed the success value of the result.
+     */
+    success: (v: R) => T;
 }
 export declare type FailablePromise<T, E> = Promise<IFailable<T, E>>;
 export declare type FailableAsyncFunctionParams<T, E> = {
@@ -161,5 +208,8 @@ export declare function failure<E, T>(err: E): IFailable<T, E>;
  * @param value Result value
  */
 export declare function success<T, E>(value: T): IFailable<T, E>;
-import { AsyncFunction as AsyncFunction_ } from "./AsyncFunction";
-export declare type AsyncFunction<Req, Res, E> = AsyncFunction_<Req, Res, E>;
+/**
+ * Helper type for an async function that
+ * takes Req and returns a {@link FailablePromise}<Res, Err>.
+ */
+export declare type AsyncFunction<Req, Res, Err> = (req: Req) => FailablePromise<Res, Err>;

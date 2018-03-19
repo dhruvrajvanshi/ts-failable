@@ -68,6 +68,12 @@ describe("failable", () => {
     expect(f3(undefined)).to.deep.equal(failure("NOT_FOUND"));
     expect(f3("asdf")).to.deep.equal(failure("NOT_A_NUMBER"));
     expect(f3("12")).to.deep.equal(success(12));
+    const r = f3(undefined); 
+    if (r.result.isError) {
+      expect(r.result.error).to.equal("NOT_FOUND");
+    } else {
+      throw new Error("Unexpectedly reached branch");
+    }
   });
 });
 

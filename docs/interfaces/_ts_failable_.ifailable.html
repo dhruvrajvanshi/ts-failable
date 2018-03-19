@@ -97,6 +97,12 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ts_failable_.ifailable.html#result" class="tsd-kind-icon">result</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="_ts_failable_.ifailable.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a></li>
@@ -105,6 +111,40 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter"><a href="_ts_failable_.ifailable.html#match" class="tsd-kind-icon">match</a></li>
 							</ul>
 						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="result" class="tsd-anchor"></a>
+					<h3>result</h3>
+					<div class="tsd-signature tsd-kind-icon">result<span class="tsd-signature-symbol">:</span> <a href="../modules/_ts_failable_.html#ifailableresult" class="tsd-signature-type">IFailableResult</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Result</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Error</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/dcd6e85/src/ts-failable.ts#L25">ts-failable.ts:25</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Return an object containing the result of
+								the computation from which the value or error
+								can be extracted using .isError check.
+							Useful as an alternative to .match</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><pre><code>
+const failable: IFailable&lt;number, <span class="hljs-built_in">string</span>&gt; = ...;
+<span class="hljs-keyword">if</span> (failable.result.isError) {
+  // .<span class="hljs-built_in">error</span> can be accessed inside this <span class="hljs-built_in">block</span>
+  console.<span class="hljs-built_in">log</span>(failable.result.<span class="hljs-built_in">error</span>);
+} <span class="hljs-keyword">else</span> {
+  // .value can be accessed inside this <span class="hljs-built_in">block</span>
+  console.<span class="hljs-built_in">log</span>(failable.result.value);
+}
+</code></pre></dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -120,7 +160,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/9394273/src/ts-failable.ts#L82">ts-failable.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/dcd6e85/src/ts-failable.ts#L102">ts-failable.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -197,7 +237,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/9394273/src/ts-failable.ts#L19">ts-failable.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/dcd6e85/src/ts-failable.ts#L39">ts-failable.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -261,7 +301,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/9394273/src/ts-failable.ts#L34">ts-failable.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/dcd6e85/src/ts-failable.ts#L54">ts-failable.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,7 +365,7 @@ const withErrorCode: Failable&lt;<span class="hljs-built_in">number</span>, <spa
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/9394273/src/ts-failable.ts#L55">ts-failable.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/dcd6e85/src/ts-failable.ts#L75">ts-failable.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -387,6 +427,9 @@ const withErrorCode: Failable&lt;<span class="hljs-built_in">number</span>, <spa
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="_ts_failable_.ifailable.html" class="tsd-kind-icon">IFailable</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_ts_failable_.ifailable.html#result" class="tsd-kind-icon">result</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-has-type-parameter">
 								<a href="_ts_failable_.ifailable.html#flatmap" class="tsd-kind-icon">flat<wbr>Map</a>
 							</li>
@@ -423,6 +466,9 @@ const withErrorCode: Failable&lt;<span class="hljs-built_in">number</span>, <spa
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../modules/_ts_failable_.html#failablepromise" class="tsd-kind-icon">Failable<wbr>Promise</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../modules/_ts_failable_.html#ifailableresult" class="tsd-kind-icon">IFailable<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../modules/_ts_failable_.html#failable" class="tsd-kind-icon">failable</a>
