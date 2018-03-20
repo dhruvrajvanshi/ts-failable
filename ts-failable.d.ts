@@ -202,7 +202,7 @@ export declare function failable<T, E>(f: FailableArg<T, E>): IFailable<T, E>;
  * Create an error {@link IFailable} value.
  * @param err Error value
  */
-export declare function failure<E, T>(err: E): IFailable<T, E>;
+export declare function failure<T, E>(err: E): IFailable<T, E>;
 /**
  * Create a successful {@link IFailable} value
  * @param value Result value
@@ -213,3 +213,11 @@ export declare function success<T, E>(value: T): IFailable<T, E>;
  * takes Req and returns a {@link FailablePromise}<Res, Err>.
  */
 export declare type AsyncFunction<Req, Res, Err> = (req: Req) => FailablePromise<Res, Err>;
+/**
+ * Take an array of elements and apply a failable computations to
+ * the array, returning an IFailable of items.
+ * @param arr Array of values
+ * @param f Function that takes an item of the given array
+ * and returns an IFailable<T, E>
+ */
+export declare function mapM<T, E>(arr: T[], f: (t: T) => IFailable<T, E>): IFailable<T[], E>;

@@ -346,7 +346,7 @@ export function failable<T, E>(
  * Create an error {@link IFailable} value.
  * @param err Error value
  */
-export function failure<E, T>(err: E): IFailable<T, E> {
+export function failure<T, E>(err: E): IFailable<T, E> {
   return new Failure<T, E>(err);
 }
 
@@ -377,3 +377,24 @@ class ErrorValue<T> {
 export type AsyncFunction<
   Req, Res, Err
 > = (req: Req) => FailablePromise<Res, Err>;
+
+/**
+ * Take an array of elements and apply a failable computations to
+ * the array, returning an IFailable of items.
+ * @param arr Array of values
+ * @param f Function that takes an item of the given array
+ * and returns an IFailable<T, E>
+ */
+export function mapM<T, E>(arr: T[], f: (t: T) => IFailable<T, E>): IFailable<T[], E> {
+  const result: T[] = [];
+  for (const item of arr) {
+    const failable = f(item);
+    if (failable.result.isError) {
+      return <any>failable;
+    } else {
+      result.push(failable.result.value);
+    }
+  }
+
+  return success(result);
+}

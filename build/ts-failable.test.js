@@ -105,6 +105,13 @@ describe("failable", function () {
         chai_1.expect(f3(undefined)).to.deep.equal(ts_failable_1.failure("NOT_FOUND"));
         chai_1.expect(f3("asdf")).to.deep.equal(ts_failable_1.failure("NOT_A_NUMBER"));
         chai_1.expect(f3("12")).to.deep.equal(ts_failable_1.success(12));
+        var r = f3(undefined);
+        if (r.result.isError) {
+            chai_1.expect(r.result.error).to.equal("NOT_FOUND");
+        }
+        else {
+            throw new Error("Unexpectedly reached branch");
+        }
     });
 });
 describe("failableAsync", function () {

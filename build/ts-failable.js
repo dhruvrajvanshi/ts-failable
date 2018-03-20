@@ -199,4 +199,26 @@ var ErrorValue = /** @class */ (function () {
     }
     return ErrorValue;
 }());
+/**
+ * Take an array of elements and apply a failable computations to
+ * the array, returning an IFailable of items.
+ * @param arr Array of values
+ * @param f Function that takes an item of the given array
+ * and returns an IFailable<T, E>
+ */
+function mapM(arr, f) {
+    var result = [];
+    for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+        var item = arr_1[_i];
+        var failable_1 = f(item);
+        if (failable_1.result.isError) {
+            return failable_1;
+        }
+        else {
+            result.push(failable_1.result.value);
+        }
+    }
+    return success(result);
+}
+exports.mapM = mapM;
 //# sourceMappingURL=ts-failable.js.map
