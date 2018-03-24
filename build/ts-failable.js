@@ -200,13 +200,15 @@ var ErrorValue = /** @class */ (function () {
     return ErrorValue;
 }());
 /**
- * Take an array of elements and apply a failable computations to
- * the array, returning an IFailable of items.
- * @param arr Array of values
- * @param f Function that takes an item of the given array
- * and returns an IFailable<T, E>
+ * Take an array of elements and apply a failable computation to
+ * the array, one element at a time, returning an IFailable of items.
+ * @param arr Array of values of type T
+ * @param f Function that takes an item of type T from the given array
+ * and returns an IFailable<U, E>.
+ * @returns A failable containing an array of U values wrapped inside
+ * an {@link IFailable}
  */
-function mapM(arr, f) {
+function mapMultiple(arr, f) {
     var result = [];
     for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
         var item = arr_1[_i];
@@ -220,5 +222,17 @@ function mapM(arr, f) {
     }
     return success(result);
 }
-exports.mapM = mapM;
+exports.mapMultiple = mapMultiple;
+exports.mapM = mapMultiple;
+/**
+ * Object containing static functions for {@link IFailable}.
+ * Anything that isn't an instance method should be added here.
+ */
+exports.Failable = {
+    of: success,
+    success: success,
+    failure: failure,
+    mapM: mapMultiple,
+    mapMultiple: mapMultiple
+};
 //# sourceMappingURL=ts-failable.js.map

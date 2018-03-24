@@ -2,7 +2,7 @@
  * Test cases for failable
  */
 
-import { failable, failableAsync, failure, success } from "./ts-failable";
+import { failable, failableAsync, failure, success, mapMultiple } from "./ts-failable";
 import { expect } from "chai";
 
 describe("failable", () => {
@@ -139,5 +139,30 @@ describe("failableAsync", () => {
     expect(await f3(undefined)).to.deep.equal(failure("NOT_FOUND"));
     expect(await f3("asdf")).to.deep.equal(failure("NOT_A_NUMBER"));
     expect(await f3("12")).to.deep.equal(success(12));
+  });
+});
+
+describe("mapMultiple", () => {
+  const f = (arg: number) => failable<string, null>(({ success, failure }) => {
+    if (arg > 5) {
+      return success((arg - 5).toString());
+    } else {
+      return failure(null);
+    }
+  });
+  it ("succeeds when all elements return success", () => {
+    const validArray = [6, 7, 10, 8];
+    const expectedArray = validArray.map(x => x - 5).map(x => x.toString());
+    expect(mapMultiple(validArray, f).result).to.deep.equal({
+      isError: false,
+      value: expectedArray
+    });
+  });
+  it ("fails when one element fails", () => {
+    const validArray = [6, 7, 3, 8];
+    expect(mapMultiple(validArray, f).result).to.deep.equal({
+      isError: true,
+      error: null
+    });
   });
 });

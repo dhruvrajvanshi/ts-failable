@@ -379,14 +379,16 @@ export type AsyncFunction<
 > = (req: Req) => FailablePromise<Res, Err>;
 
 /**
- * Take an array of elements and apply a failable computations to
- * the array, returning an IFailable of items.
- * @param arr Array of values
- * @param f Function that takes an item of the given array
- * and returns an IFailable<T, E>
+ * Take an array of elements and apply a failable computation to
+ * the array, one element at a time, returning an IFailable of items.
+ * @param arr Array of values of type T
+ * @param f Function that takes an item of type T from the given array
+ * and returns an IFailable<U, E>.
+ * @returns A failable containing an array of U values wrapped inside
+ * an {@link IFailable}
  */
-export function mapM<T, E>(arr: T[], f: (t: T) => IFailable<T, E>): IFailable<T[], E> {
-  const result: T[] = [];
+export function mapMultiple<T, U, E>(arr: T[], f: (t: T) => IFailable<U, E>): IFailable<U[], E> {
+  const result: U[] = [];
   for (const item of arr) {
     const failable = f(item);
     if (failable.result.isError) {
@@ -397,4 +399,18 @@ export function mapM<T, E>(arr: T[], f: (t: T) => IFailable<T, E>): IFailable<T[
   }
 
   return success(result);
+}
+
+export const mapM = mapMultiple;
+
+/**
+ * Object containing static functions for {@link IFailable}.
+ * Anything that isn't an instance method should be added here.
+ */
+export const Failable = {
+  of: success,
+  success,
+  failure,
+  mapM: mapMultiple,
+  mapMultiple
 }

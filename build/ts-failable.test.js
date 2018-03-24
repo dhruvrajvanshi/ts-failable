@@ -283,4 +283,30 @@ describe("failableAsync", function () {
         });
     }); });
 });
+describe("mapMultiple", function () {
+    var f = function (arg) { return ts_failable_1.failable(function (_a) {
+        var success = _a.success, failure = _a.failure;
+        if (arg > 5) {
+            return success((arg - 5).toString());
+        }
+        else {
+            return failure(null);
+        }
+    }); };
+    it("succeeds when all elements return success", function () {
+        var validArray = [6, 7, 10, 8];
+        var expectedArray = validArray.map(function (x) { return x - 5; }).map(function (x) { return x.toString(); });
+        chai_1.expect(ts_failable_1.mapMultiple(validArray, f).result).to.deep.equal({
+            isError: false,
+            value: expectedArray
+        });
+    });
+    it("fails when one element fails", function () {
+        var validArray = [6, 7, 3, 8];
+        chai_1.expect(ts_failable_1.mapMultiple(validArray, f).result).to.deep.equal({
+            isError: true,
+            error: null
+        });
+    });
+});
 //# sourceMappingURL=ts-failable.test.js.map
