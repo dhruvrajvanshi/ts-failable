@@ -6,12 +6,72 @@ ts-failable
 [![Issues](https://img.shields.io/github/issues/dhruvrajvanshi/ts-failable.svg?branch=master)](https://github.com/dhruvrajvanshi/ts-failable/issues)
 
 
-This is a library for type safe error handling in Typescript.
+This is a library for type safe error/null handling in Typescript.
 If you've ever wished for Rust's `Result` type along with
 the syntactic sugar (`?` operator) in Typescript, you might
-find this useful. 
+find this useful.
 
-## Why
+## API Docs
+https://dhruvrajvanshi.github.io/ts-failable/docs/index.html
+
+## Installation
+
+```
+npm install ts-failable
+```
+For type safe optionals, you need Typescript version >= 2.8.1
+because it uses conditional types. Also, your runtime needs to
+support `Proxy` support, which is not supported in IE.
+
+For IE support, there would be a less transparent version of Optional
+in the future.
+
+## Optional
+Optional type is exposed which lets you access deeply nested
+nullable properties as if each intermediate object was defined.
+```ts
+import { Optional } from "ts-failable/optional";
+type T = {
+  x?: {
+    y?: {
+      z: string;
+    }
+  }
+}
+const t: T = {};
+const optionalT = Optional.of(t)
+console.log(optionalT.x.y.z.valueOf()) // null
+const optionalT1 = Optional.of<T>({
+  x: {
+    y: {
+      z: "asdf"
+    }
+  }
+})
+console.log(optionalT.x.y.z.valueOf()) // asdf
+```
+So, any `null`/`undefined` value along the path short
+circuits the evaluation. If you're familiar with Kotlin,
+this is similar to
+```kotlin
+optionalT.x?.y?.z
+```
+
+### Caveats
+* Currently, this only works on immutable objects. Mutating the
+  object might have unintended consequences. This restriction
+  will be removed in a later version. Submit a PR if you want this
+  now :)
+* Because it iternally uses proxy, each intermediate lookup
+  involves an extra heap lookup and a string comparison (to check)
+  agains "valueOf", so, if you're using this in a hot loop with
+  a lot of nested keys, it will cost you.
+* Properties that have type `Something | undefined` are converted
+  to `null` by value of so you only have to check for `null`.
+* Conditional types are required so use Typescript version >= 2.8.1
+
+## Result
+### Why
 In Typescript, there's no way to check the type of exceptions
 that a function can throw at compile time. When you catch an exception,
 you get a value of type `any`. You can encode a result type `Either`/`Result`
@@ -45,14 +105,6 @@ let r3 = run(computation3(r1, r2))
 Any failure in an intermediate step should short circuit the
 whole thing.
 
-## Installation
-
-```
-npm install ts-failable
-```
-
-## API Docs
-https://dhruvrajvanshi.github.io/ts-failable/docs/index.html
 
 ## Usage
 We'll walk through a simple function named getNumber that takes
