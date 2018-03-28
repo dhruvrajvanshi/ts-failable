@@ -2,7 +2,8 @@
  * Test cases for failable
  */
 
-import { failable, failableAsync, failure, success, mapMultiple } from "./ts-failable";
+import { failable, failableAsync, failure, success, mapMultiple } from "../src/failable";
+// tslint:disable
 import { expect } from "chai";
 
 describe("failable", () => {

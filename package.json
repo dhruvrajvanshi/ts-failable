@@ -1,11 +1,11 @@
 {
   "name": "ts-failable",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Library for type safe error handling in Typescript",
-  "main": "index.js",
+  "main": "build/ts-failable.js",
   "types": "./ts-failable.d.ts",
   "scripts": {
-    "test": "mocha --compilers ts:ts-node/register './src/**/*.test.[tj]s'",
+    "test": "mocha --compilers ts:ts-node/register './test/**/*[tj]s'",
     "build": "tsc",
     "docs": "typedoc --mode modules --exclude '**/*.test.[tj]s' --module commonjs --target es5 --readme ./README.md --name ts-failable --excludePrivate --excludeExternals --excludeNotExported --out docs",
     "clean": "rm -rf build; rm -rf docs; rm ts-failable.d.ts"
@@ -36,6 +36,9 @@
     "tslint-language-service": "0.9.8",
     "tslint-microsoft-contrib": "5.0.3",
     "typedoc": "0.11.1",
-    "typescript": "2.7.2"
+    "typescript": "2.8.1"
+  },
+  "peerDependencies": {
+    "typescript": ">=2.8.1"
   }
 }

@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_ts_failable_.html">&quot;ts-failable&quot;</a>
+					<a href="../modules/_failable_.html">&quot;failable&quot;</a>
 				</li>
 				<li>
-					<a href="_ts_failable_.ifailablematchcase.html">IFailableMatchCase</a>
+					<a href="_failable_.ifailablematchcase.html">IFailableMatchCase</a>
 				</li>
 			</ul>
 			<h1>Interface IFailableMatchCase&lt;T, R, E&gt;</h1>
@@ -103,90 +103,74 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ts_failable_.ifailablematchcase.html#failure" class="tsd-kind-icon">failure</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_ts_failable_.ifailablematchcase.html#success" class="tsd-kind-icon">success</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_failable_.ifailablematchcase.html#failure" class="tsd-kind-icon">failure</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_failable_.ifailablematchcase.html#success" class="tsd-kind-icon">success</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="failure" class="tsd-anchor"></a>
 					<h3>failure</h3>
-					<div class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/6972a89/src/ts-failable.ts#L167">ts-failable.ts:167</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Callback that is run in case of failure.
-							It is passed the error value of the result.</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">failure<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in failable.ts:177</li>
 								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>e: <span class="tsd-signature-type">E</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Callback that is run in case of failure.
+									It is passed the error value of the result.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e: <span class="tsd-signature-type">E</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="success" class="tsd-anchor"></a>
 					<h3>success</h3>
-					<div class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dhruvrajvanshi/ts-failable/blob/6972a89/src/ts-failable.ts#L173">ts-failable.ts:173</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Callback that is called in case of success.
-							It is passed the success value of the result.</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">success<span class="tsd-signature-symbol">(</span>v<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">R</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in failable.ts:183</li>
 								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>v: <span class="tsd-signature-type">R</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Callback that is called in case of success.
+									It is passed the success value of the result.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>v: <span class="tsd-signature-type">R</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -197,6 +181,12 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
+						<a href="../modules/_failable_.html">"failable"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_optional_.html">"optional"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_ts_failable_.html">"ts-<wbr>failable"</a>
 					</li>
 				</ul>
@@ -204,64 +194,64 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_ts_failable_.ifailable.html" class="tsd-kind-icon">IFailable</a>
+						<a href="_failable_.ifailable.html" class="tsd-kind-icon">IFailable</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_ts_failable_.ifailablematchcase.html" class="tsd-kind-icon">IFailable<wbr>Match<wbr>Case</a>
+						<a href="_failable_.ifailablematchcase.html" class="tsd-kind-icon">IFailable<wbr>Match<wbr>Case</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ts_failable_.ifailablematchcase.html#failure" class="tsd-kind-icon">failure</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_failable_.ifailablematchcase.html#failure" class="tsd-kind-icon">failure</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_ts_failable_.ifailablematchcase.html#success" class="tsd-kind-icon">success</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_failable_.ifailablematchcase.html#success" class="tsd-kind-icon">success</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#asyncfunction" class="tsd-kind-icon">Async<wbr>Function</a>
+						<a href="../modules/_failable_.html#asyncfunction" class="tsd-kind-icon">Async<wbr>Function</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failablearg" class="tsd-kind-icon">Failable<wbr>Arg</a>
+						<a href="../modules/_failable_.html#failablearg" class="tsd-kind-icon">Failable<wbr>Arg</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failableargparams" class="tsd-kind-icon">Failable<wbr>Arg<wbr>Params</a>
+						<a href="../modules/_failable_.html#failableargparams" class="tsd-kind-icon">Failable<wbr>Arg<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failableasyncarg" class="tsd-kind-icon">Failable<wbr>Async<wbr>Arg</a>
+						<a href="../modules/_failable_.html#failableasyncarg" class="tsd-kind-icon">Failable<wbr>Async<wbr>Arg</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failableasyncfunctionparams" class="tsd-kind-icon">Failable<wbr>Async<wbr>Function<wbr>Params</a>
+						<a href="../modules/_failable_.html#failableasyncfunctionparams" class="tsd-kind-icon">Failable<wbr>Async<wbr>Function<wbr>Params</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failablepromise" class="tsd-kind-icon">Failable<wbr>Promise</a>
+						<a href="../modules/_failable_.html#failablepromise" class="tsd-kind-icon">Failable<wbr>Promise</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#ifailableresult" class="tsd-kind-icon">IFailable<wbr>Result</a>
+						<a href="../modules/_failable_.html#ifailableresult" class="tsd-kind-icon">IFailable<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_ts_failable_.html#mapm" class="tsd-kind-icon">mapM</a>
+						<a href="../modules/_failable_.html#mapm" class="tsd-kind-icon">mapM</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failable" class="tsd-kind-icon">failable</a>
+						<a href="../modules/_failable_.html#failable" class="tsd-kind-icon">failable</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failableasync" class="tsd-kind-icon">failable<wbr>Async</a>
+						<a href="../modules/_failable_.html#failableasync" class="tsd-kind-icon">failable<wbr>Async</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#failure" class="tsd-kind-icon">failure</a>
+						<a href="../modules/_failable_.html#failure" class="tsd-kind-icon">failure</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#mapmultiple" class="tsd-kind-icon">map<wbr>Multiple</a>
+						<a href="../modules/_failable_.html#mapmultiple" class="tsd-kind-icon">map<wbr>Multiple</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../modules/_ts_failable_.html#success" class="tsd-kind-icon">success</a>
+						<a href="../modules/_failable_.html#success" class="tsd-kind-icon">success</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
-						<a href="../modules/_ts_failable_.html#failable-1" class="tsd-kind-icon">Failable</a>
+						<a href="../modules/_failable_.html#failable-1" class="tsd-kind-icon">Failable</a>
 					</li>
 				</ul>
 			</nav>

@@ -24,14 +24,16 @@
         "disableNoUnusedVariableRule": true
       }
     ],
+    "baseUrl": "./src",
+    "paths": {
+      "ts-failable": ["./ts-failable.ts"],
+      "ts-failable/*": ["./*"]
+    },
     "types": [
       "mocha", "chai"
     ]
   },
   "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
+    "./src/**/*.ts"
   ]
 }

@@ -6,6 +6,10 @@
     "no-parameter-properties": false,
     "typedef": false,
     "ordered-imports": false,
-    "no-relative-imports": false
+    "no-relative-imports": false,
+    "quotemark": [true, "double"],
+    "chai-vague-errors": false,
+    "promise-function-async": false,
+    "variable-name": false
   }
 }
