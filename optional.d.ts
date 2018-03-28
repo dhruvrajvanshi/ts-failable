@@ -52,7 +52,7 @@ export declare type IOptional<T> = {
      * {@link IOptional}
      */
     ___ts_failable_optional___: never;
-    valueOf(): T | null;
+    valueOf(): NonNullable<T> | null;
 } & T extends string | number | boolean | symbol ? {
     ___ts_failable_optional___: never;
     valueOf(): NonNullable<T> | null;
