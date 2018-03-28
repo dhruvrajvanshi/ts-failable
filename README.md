@@ -63,8 +63,8 @@ optionalT.x?.y?.z
   will be removed in a later version. Submit a PR if you want this
   now :)
 * Because it iternally uses proxy, each intermediate lookup
-  involves an extra heap lookup and a string comparison (to check)
-  agains "valueOf", so, if you're using this in a hot loop with
+  involves an extra heap lookup and a string comparison (to check
+  against "valueOf") so, if you're using this in a hot loop with
   a lot of nested keys, it will cost you.
 * Properties that have type `Something | undefined` are converted
   to `null` by value of so you only have to check for `null`.
