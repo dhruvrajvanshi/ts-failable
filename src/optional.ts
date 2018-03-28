@@ -26,14 +26,39 @@
  * })
  * console.log(x.y.z.valueOf()); // 10
  * ```
+ *
+ * You need to extract the value at the end by calling .valueOf.
+ * Obviously, you'd run into problems if your type contains
+ * a .valueOf property.
+ * The way this type works is it makes all nullable/undefined properties
+ * along the path non nullable and it turns all the "leaf" level properties
+ * into nullable.
+ * Leaf level properties are the types which are primitive
+ * (string | number | boolean | symbol).
+ * The so, if you have a deeply nested value .a.b.c.z: string,
+ * you'd access it as .a.b.c.z.valueOf(), which will give you
+ * a `string | null`. It will be null in case any value along
+ * the path is null/undefined.
+ * Note that leaf level properties which are optional (i.e. `T | undefined`),
+ * they would be converted to `T | null` by `.valueOf`.
  */
 export type IOptional<T> =
   {
-    valueOf(): T | null;
+    /**
+     * This is a phantom type parameter that ensures
+     * that objects created outside this module are
+     * not assignable to IOptional<T>.
+     * This has no runtime significance
+     * Optional.of uses a type cast to make an
+     * {@link IOptional}
+     */
+    ___ts_failable_optional___: never;
+    valueOf(): NonNullable<T> | null;
   } &
   T extends string | number | boolean | symbol
     ? {
-      valueOf(): T | null;
+      ___ts_failable_optional___: never;
+      valueOf(): NonNullable<T> | null;
     }
     : {
       [K in keyof T]-?:
