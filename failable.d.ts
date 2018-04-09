@@ -22,7 +22,7 @@ export interface IFailable<Result, Error> {
      * }
      * ```
      */
-    result: IFailableResult<Result, Error>;
+    readonly result: IFailableResult<Result, Error>;
     /**
      * Transform an {@link IFailable}<R, E> into an {@link IFailable}<R2, E>
      * by applying the given function to the result value in
@@ -104,11 +104,11 @@ export interface IFailable<Result, Error> {
  * `if (r.isError)` check
  */
 export declare type IFailableResult<T, E> = {
-    isError: true;
-    error: E;
+    readonly isError: true;
+    readonly error: E;
 } | {
-    isError: false;
-    value: T;
+    readonly isError: false;
+    readonly value: T;
 };
 /**
  * Argument type of .match method on an {@link IFailbale}.
@@ -222,8 +222,9 @@ export declare type AsyncFunction<Req, Res, Err> = (req: Req) => FailablePromise
  * @returns A failable containing an array of U values wrapped inside
  * an {@link IFailable}
  */
-export declare function mapMultiple<T, U, E>(arr: T[], f: (t: T) => IFailable<U, E>): IFailable<U[], E>;
+export declare function mapMultiple<T, U, E>(arr: ReadonlyArray<T>, f: (t: T) => IFailable<U, E>): IFailable<U[], E>;
 export declare const mapM: typeof mapMultiple;
+export declare function isFailableException<T>(e: T): boolean;
 /**
  * Object containing static functions for {@link IFailable}.
  * Anything that isn't an instance method should be added here.
@@ -234,4 +235,5 @@ export declare const Failable: {
     failure: typeof failure;
     mapM: typeof mapMultiple;
     mapMultiple: typeof mapMultiple;
+    isFailableException: typeof isFailableException;
 };

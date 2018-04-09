@@ -1,6 +1,6 @@
 {
   "name": "ts-failable",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Library for type safe error handling in Typescript",
   "main": "build/ts-failable.js",
   "types": "./ts-failable.d.ts",

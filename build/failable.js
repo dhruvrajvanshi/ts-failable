@@ -211,6 +211,8 @@ function mapMultiple(arr, f) {
         var item = arr_1[_i];
         var fail = f(item);
         if (fail.result.isError) {
+            // since there's no way to get a value from a failure,
+            // we can just typecast the current failure and return it.
             // tslint:disable:no-any
             return fail;
         }
@@ -222,6 +224,10 @@ function mapMultiple(arr, f) {
 }
 exports.mapMultiple = mapMultiple;
 exports.mapM = mapMultiple;
+function isFailableException(e) {
+    return e instanceof Failure;
+}
+exports.isFailableException = isFailableException;
 /**
  * Object containing static functions for {@link IFailable}.
  * Anything that isn't an instance method should be added here.
@@ -231,6 +237,7 @@ exports.Failable = {
     success: success,
     failure: failure,
     mapM: mapMultiple,
-    mapMultiple: mapMultiple
+    mapMultiple: mapMultiple,
+    isFailableException: isFailableException
 };
 //# sourceMappingURL=failable.js.map

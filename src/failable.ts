@@ -22,7 +22,7 @@ export interface IFailable<Result, Error> {
    * }
    * ```
    */
-  result: IFailableResult<Result, Error>;
+  readonly result: IFailableResult<Result, Error>;
   /**
    * Transform an {@link IFailable}<R, E> into an {@link IFailable}<R2, E>
    * by applying the given function to the result value in
@@ -110,11 +110,11 @@ export interface IFailable<Result, Error> {
  * `if (r.isError)` check
  */
 export type IFailableResult<T, E> = {
-  isError: true;
-  error: E;
+  readonly isError: true;
+  readonly error: E;
 } | {
-  isError: false;
-  value: T;
+  readonly isError: false;
+  readonly value: T;
 };
 
 /**
@@ -384,11 +384,13 @@ export type AsyncFunction<
  * @returns A failable containing an array of U values wrapped inside
  * an {@link IFailable}
  */
-export function mapMultiple<T, U, E>(arr: T[], f: (t: T) => IFailable<U, E>): IFailable<U[], E> {
+export function mapMultiple<T, U, E>(arr: ReadonlyArray<T>, f: (t: T) => IFailable<U, E>): IFailable<U[], E> {
   const result: U[] = [];
   for (const item of arr) {
     const fail = f(item);
     if (fail.result.isError) {
+      // since there's no way to get a value from a failure,
+      // we can just typecast the current failure and return it.
       // tslint:disable:no-any
       return <any>fail;
     } else {
@@ -401,6 +403,9 @@ export function mapMultiple<T, U, E>(arr: T[], f: (t: T) => IFailable<U, E>): IF
 
 export const mapM = mapMultiple;
 
+export function isFailableException<T>(e: T): boolean {
+  return e instanceof Failure;
+}
 /**
  * Object containing static functions for {@link IFailable}.
  * Anything that isn't an instance method should be added here.
@@ -410,5 +415,6 @@ export const Failable = {
   success,
   failure,
   mapM: mapMultiple,
-  mapMultiple
+  mapMultiple,
+  isFailableException
 };
