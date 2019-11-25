@@ -6,6 +6,8 @@ ts-failable
 [![Issues](https://img.shields.io/github/issues/dhruvrajvanshi/ts-failable.svg?branch=master)](https://github.com/dhruvrajvanshi/ts-failable/issues)
 
 
+**This is a crazy experiment. Don't use it in production unless you know what you're doing!**
+
 This is a library for type safe error/null handling in Typescript.
 If you've ever wished for Rust's `Result` type along with
 the syntactic sugar (`?` operator) in Typescript, you might
