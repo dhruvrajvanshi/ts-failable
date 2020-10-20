@@ -6,7 +6,7 @@ ts-failable
 [![Issues](https://img.shields.io/github/issues/dhruvrajvanshi/ts-failable.svg?branch=master)](https://github.com/dhruvrajvanshi/ts-failable/issues)
 
 
-**This is a crazy experiment. Don't use it in production unless you know what you're doing!**
+**Optional has pretty much been made redundant by new null colascing operator that has landed in stable Typescript. Result is still useful**
 
 This is a library for type safe error/null handling in Typescript.
 If you've ever wished for Rust's `Result` type along with
@@ -28,49 +28,6 @@ support `Proxy` support, which is not supported in IE.
 For IE support, there would be a less transparent version of Optional
 in the future.
 
-## Optional
-Optional type is exposed which lets you access deeply nested
-nullable properties as if each intermediate object was defined.
-```ts
-import { Optional } from "ts-failable/optional";
-type T = {
-  x?: {
-    y?: {
-      z: string;
-    }
-  }
-}
-const t: T = {};
-const optionalT = Optional.of(t)
-console.log(optionalT.x.y.z.valueOf()) // null
-const optionalT1 = Optional.of<T>({
-  x: {
-    y: {
-      z: "asdf"
-    }
-  }
-})
-console.log(optionalT.x.y.z.valueOf()) // asdf
-```
-So, any `null`/`undefined` value along the path short
-circuits the evaluation. If you're familiar with Kotlin,
-this is similar to
-```kotlin
-optionalT.x?.y?.z
-```
-
-### Caveats
-* Currently, this only works on immutable objects. Mutating the
-  object might have unintended consequences. This restriction
-  will be removed in a later version. Submit a PR if you want this
-  now :)
-* Because it iternally uses proxy, each intermediate lookup
-  involves an extra heap lookup and a string comparison (to check
-  against "valueOf") so, if you're using this in a hot loop with
-  a lot of nested keys, it will cost you.
-* Properties that have type `Something | undefined` are converted
-  to `null` by value of so you only have to check for `null`.
-* Conditional types are required so use Typescript version >= 2.8.1
 
 ## Result
 ### Why
@@ -288,3 +245,48 @@ const query = (q: string) =>
 Now, you can use the query function in any `failableAsync` context
 while ensuring that DB_ERROR is either handled by the caller or
 is propagated upwards.
+
+
+## Optional
+Optional type is exposed which lets you access deeply nested
+nullable properties as if each intermediate object was defined.
+```ts
+import { Optional } from "ts-failable/optional";
+type T = {
+  x?: {
+    y?: {
+      z: string;
+    }
+  }
+}
+const t: T = {};
+const optionalT = Optional.of(t)
+console.log(optionalT.x.y.z.valueOf()) // null
+const optionalT1 = Optional.of<T>({
+  x: {
+    y: {
+      z: "asdf"
+    }
+  }
+})
+console.log(optionalT.x.y.z.valueOf()) // asdf
+```
+So, any `null`/`undefined` value along the path short
+circuits the evaluation. If you're familiar with Kotlin,
+this is similar to
+```kotlin
+optionalT.x?.y?.z
+```
+
+### Caveats
+* Currently, this only works on immutable objects. Mutating the
+  object might have unintended consequences. This restriction
+  will be removed in a later version. Submit a PR if you want this
+  now :)
+* Because it iternally uses proxy, each intermediate lookup
+  involves an extra heap lookup and a string comparison (to check
+  against "valueOf") so, if you're using this in a hot loop with
+  a lot of nested keys, it will cost you.
+* Properties that have type `Something | undefined` are converted
+  to `null` by value of so you only have to check for `null`.
+* Conditional types are required so use Typescript version >= 2.8.1
